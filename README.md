@@ -304,19 +304,19 @@ A reasonable question to ask is, "Where will my pipeline likely fail?"
 
 #### Non-freeway environment
 
-While my pipeline seems to work well for freeway driving, where the only oncoming traffic is in the distance and beyond a guardrail, it might well fail in an urban setting or on a road with no lane divider. The smoothing I added makes assumptions about the relatively constance of surrounding cars from one frame to the next. High-speed oncoming traffic could well negate those assumptions.
+While my pipeline seems to work well for freeway driving, where the only oncoming traffic is in the distance and beyond a guardrail, it might well fail in an urban setting or on a road with no lane divider. The smoothing I added makes assumptions about the relative constance of surrounding cars from one frame to the next. High-speed oncoming traffic could well negate those assumptions.
 
 #### Performance: Run-time processing
 
-I'm concerned that my pipeline would lag while processing images in real-time. With some parameter settings it over an hour to process the ~1 minute project video. At that rate, it would only be able to munge through a frame every 3-4 seconds, which would not be adequate. Better hardware (I'm on a MacBoo) and greater attention to code and parameter optimization would likely drive the frame processing throughput, but this is an important issue to explore further.
+I'm concerned that my pipeline would lag while processing images in real-time. With some parameter settings it took half an hour to process the <1 minute project video. At that rate, it would only be able to munge through a frame every 1-2 seconds, which would not be adequate. Better hardware (I'm on a MacBook Pro) and greater attention to code and parameter optimization would likely drive the frame processing throughput, but this is an important issue to explore further.
 
 ### For further exploration
 
 That said, the areas I would like to pursue further are:
 
-#### Auto-tuning the classifier(s)
+#### Auto-tuning the classifiers
 
-Auto-tuning the classifier to detect which:
+Auto-tuning the classifiers to detect which:
 
 * scale sizes
 * filter thresholds
@@ -329,11 +329,11 @@ Auto-tuning the classifier to detect which:
 * hist_bins
 * bin_size 
 
-parameters produce the optimal results feels like a promising path to pursue. I was excited to come across this in the lesson -- GridSearchCV and RandomizedSearchCV -- because it had occurred to me earlier in the term that we could really benefit from tools like this, instead of using trial and error with only a handful of parameter combinations.
+parameters produce the optimal results feels like a promising path to pursue. I was excited to come across this in the lesson -- GridSearchCV and RandomizedSearchCV -- because it had occurred to me earlier in the term that we could really benefit from automated tools like this, instead of using trial and error with only a handful of parameter combinations.
 
 #### Reducing the fps
 
-Along the lines of the performance concern I raised above, it seems like we could get away with processing only a fraction of the frames in the video. The surrounding scenery may whiz by, but the cars on the freeway don't move very quickly relative to ours, and they are the only thing we're interested in detecting here. Even if we could process 24fps in real-time, I'm confident we could put our resources to better use, on a task like this, extending the feature set or increasing the granularity of the sliding window search panels, or in some other area.
+Along the lines of the performance concern I raised above, it seems like we could get away with processing only a fraction of the frames in the video. The surrounding scenery may whiz by, but the cars on the freeway don't move very quickly relative to ours, and they are the only thing we're interested in detecting here. Even if we could process 24fps in real-time, I'm confident the processing resources could be put to better use, for a task like this, on an area like extending the feature set or increasing the granularity of the sliding window search panels.
 
 
 
